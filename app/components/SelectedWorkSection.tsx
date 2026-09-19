@@ -191,11 +191,10 @@ export function SelectedWorkSection() {
                   key={tab}
                   type="button"
                   onClick={() => setActiveFilter(tab)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer select-none ${
-                    isActive
+                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer select-none ${isActive
                       ? "text-white shadow-md shadow-blue-600/25"
                       : "bg-white border border-slate-200/90 text-slate-600 hover:border-slate-300 hover:text-slate-900"
-                  }`}
+                    }`}
                 >
                   {isActive && (
                     <motion.div
@@ -233,7 +232,7 @@ export function SelectedWorkSection() {
                 className="work-card-wrapper"
               >
                 <Link
-                  href={project.href}
+                  href={project.href || "#"}
                   className="group flex flex-col cursor-pointer focus-visible:outline-none"
                 >
                   {/* Card Image Frame */}
