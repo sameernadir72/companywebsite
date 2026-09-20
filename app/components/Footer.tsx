@@ -124,10 +124,10 @@ export function Footer() {
 
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#FF5500] hover:bg-[#FF4500] text-white px-7 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-medium shadow-[0_4px_24px_rgba(255,85,0,0.35)] hover:shadow-[0_8px_32px_rgba(255,85,0,0.5)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-7 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-medium shadow-[0_4px_24px_rgba(255,85,0,0.35)] hover:shadow-[0_8px_32px_rgba(255,85,0,0.55)] transition-all duration-300 ease-out cursor-pointer"
               >
                 <span>Let&apos;s Talk</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
               </Link>
             </div>
           </div>

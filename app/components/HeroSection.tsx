@@ -3,29 +3,43 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { heroProjects } from "../data/heroProjects";
-import { MagneticButton } from "./ui/MagneticButton";
+
 
 export function HeroSection() {
   return (
     <section
       id="hero"
       aria-label="Fusion Folio — Your 360° Creative & Digital Partner"
-      className="relative overflow-hidden bg-[#07112C] text-white min-h-[920px] lg:min-h-[1020px] flex flex-col justify-between"
+      className="relative w-full overflow-hidden bg-[#07112C] text-white flex flex-col items-center"
     >
-      {/* High-res background image */}
+      {/* High-res background image spanning 100% of viewport width */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none z-0"
-        style={{ backgroundImage: "url('/hero-bg-wave.png')" }}
-      />
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full min-w-full overflow-hidden select-none"
+        style={{
+          backgroundImage: "url('/hero-bg-wave.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+        }}
+      >
+        <Image
+          src="/hero-bg-wave.jpeg"
+          alt="Fusion Folio Hero Background Wave"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center w-full h-full select-none pointer-events-none"
+        />
+      </div>
 
       {/* Ambient gradient overlays for smooth blending and optimal text contrast */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#07112C]/60 via-transparent to-[#07112C]/90 pointer-events-none z-0" />
 
-      {/* Main Hero Content */}
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pt-36 sm:pt-44 md:pt-48 pb-12 sm:pb-16 flex flex-col items-center text-center">
+      {/* Main Hero Content — tight, balanced vertical spacing matching Figma specs */}
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 lg:pb-10 flex flex-col items-center text-center">
         {/* Eyebrow */}
-        <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#C0D6F9] uppercase mb-4 sm:mb-6">
+        <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#C0D6F9] uppercase mb-3 sm:mb-4">
           YOUR 360° CREATIVE &amp; DIGITAL PARTNER
         </p>
 
@@ -42,32 +56,28 @@ export function HeroSection() {
           Websites, experiences, motion, reels and Meta campaigns. One connected team to bring your brand forward.
         </p>
 
-        {/* Action Buttons */}
-        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
-          <MagneticButton>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#FF4500] text-white px-7 py-3.5 sm:px-8 sm:py-4 font-medium text-base shadow-[0_4px_24px_rgba(255,85,0,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <span>Start a Project</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </MagneticButton>
+        {/* Action Buttons — stationary layout with smooth, luxury color transitions */}
+        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/contact"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-7 py-3.5 sm:px-8 sm:py-4 font-medium text-base shadow-[0_4px_20px_rgba(255,85,0,0.35)] hover:shadow-[0_8px_32px_rgba(255,85,0,0.6)] transition-all duration-300 ease-out cursor-pointer"
+          >
+            <span>Start a Project</span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+          </Link>
 
-          <MagneticButton>
-            <Link
-              href="/work"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 text-white px-7 py-3.5 sm:px-8 sm:py-4 font-medium text-base backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <span>Explore Our Work</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </MagneticButton>
+          <Link
+            href="/work"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#07112C] border border-white/20 hover:border-white px-7 py-3.5 sm:px-8 sm:py-4 font-medium text-base backdrop-blur-md shadow-sm hover:shadow-[0_8px_30px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out cursor-pointer"
+          >
+            <span>Explore Our Work</span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
 
       {/* Bottom Project Section / Carousel Strip */}
-      <div className="relative z-10 w-full overflow-hidden pb-6 pt-2">
+      <div className="relative z-10 w-full overflow-hidden pt-2 pb-10 sm:pb-14">
         <div className="hero-mask-x relative w-full overflow-hidden">
           <div className="flex w-max animate-marquee items-center gap-6 py-2 hover:[animation-play-state:paused]">
             {/* 3x duplicated strip for smooth, seamless continuous infinite marquee */}

@@ -169,7 +169,7 @@ export function AboutSection() {
     <section
       id="about"
       aria-label="About Us — Big ideas deserve a connected team"
-      className="relative overflow-hidden bg-[#FAFAFC] py-20 sm:py-28 lg:py-32 text-[#0A1128]"
+      className="relative overflow-hidden bg-[#FAFAFC] py-10 sm:py-14 lg:py-16 text-[#0A1128]"
     >
       {/* Subtle organic blue contour curves in background */}
       <div
@@ -196,12 +196,12 @@ export function AboutSection() {
         </svg>
 
         {/* Decorative dot grids */}
-        <div className="absolute right-8 top-12 sm:right-16 sm:top-16 grid grid-cols-5 gap-2.5 opacity-30">
+        <div className="absolute right-8 top-6 sm:right-16 sm:top-8 grid grid-cols-5 gap-2.5 opacity-30">
           {Array.from({ length: 25 }).map((_, i) => (
             <div key={i} className="h-1 w-1 rounded-full bg-slate-400" />
           ))}
         </div>
-        <div className="absolute bottom-12 left-8 sm:bottom-16 sm:left-16 grid grid-cols-5 gap-2.5 opacity-30">
+        <div className="absolute bottom-6 left-8 sm:bottom-16 sm:left-16 grid grid-cols-5 gap-2.5 opacity-30">
           {Array.from({ length: 25 }).map((_, i) => (
             <div key={i} className="h-1 w-1 rounded-full bg-slate-400" />
           ))}
@@ -209,8 +209,8 @@ export function AboutSection() {
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-12">
-        {/* Header Row */}
-        <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-12 lg:gap-12 pb-12 sm:pb-16">
+        {/* Header Row — tightened spacing */}
+        <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-12 lg:gap-12 pb-6 sm:pb-8 lg:pb-10">
           <div className="lg:col-span-7">
             <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-[#FF5500] uppercase block mb-3">
               ABOUT US
@@ -332,8 +332,8 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Bottom Navigation & CTA Row */}
-        <div className="mt-10 sm:mt-14 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-t border-slate-200/70 pt-8">
+        {/* Bottom Navigation & CTA Row — tightened spacing */}
+        <div className="mt-6 sm:mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-t border-slate-200/70 pt-5 sm:pt-6">
           {/* Tab Navigation with Animated Underline */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base font-medium">
             {tabOrder.map((tab, idx) => {
@@ -343,11 +343,10 @@ export function AboutSection() {
                   <button
                     type="button"
                     onClick={() => handleTabChange(tab)}
-                    className={`relative px-3 py-1.5 rounded-full text-sm sm:text-base font-medium transition-colors duration-200 cursor-pointer ${
-                      isActive
+                    className={`relative px-3 py-1.5 rounded-full text-sm sm:text-base font-medium transition-colors duration-200 cursor-pointer ${isActive
                         ? "text-[#0A1128] font-bold"
                         : "text-slate-500 hover:text-[#0A1128]"
-                    }`}
+                      }`}
                   >
                     <span className="relative z-10">{tab}</span>
                     {isActive && (
@@ -376,10 +375,10 @@ export function AboutSection() {
           <div>
             <Link
               href="/about"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#FF4500] text-white px-7 py-3.5 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base shadow-[0_4px_18px_rgba(255,85,0,0.35)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-7 py-3 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base shadow-[0_4px_18px_rgba(255,85,0,0.35)] hover:shadow-[0_8px_28px_rgba(255,85,0,0.55)] transition-all duration-300 ease-out cursor-pointer"
             >
-              <span>Learn Our Story</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <span>Meet the Team</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

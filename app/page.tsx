@@ -27,9 +27,9 @@ export default function Home() {
         <WhyUsSection />
         <ProcessSection />
         <IndustriesSection />
-        <MeetFusionFolioSection />
         <SocialContentSection />
         <WorkWithUsSection />
+        <MeetFusionFolioSection />
         <FAQ />
         <CTASection />
       </main>

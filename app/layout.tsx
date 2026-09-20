@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist, Newsreader, Manrope } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist, Newsreader, Manrope, DM_Sans, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -23,6 +23,18 @@ const newsreader = Newsreader({
 
 const manrope = Manrope({
   variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -92,7 +104,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${geist.variable} ${newsreader.variable} ${manrope.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${geist.variable} ${newsreader.variable} ${manrope.variable} ${dmSans.variable} ${instrumentSans.variable} h-full antialiased`}
     >
       <head>
         <script

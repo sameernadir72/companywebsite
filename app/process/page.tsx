@@ -161,19 +161,17 @@ export default function ProcessPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <MagneticButton>
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#FF4500] text-white px-8 py-4 font-semibold text-base shadow-[0_4px_24px_rgba(255,85,0,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
-                >
-                  <span>Start Your First Sprint</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-              </MagneticButton>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-8 py-4 font-semibold text-base shadow-[0_4px_20px_rgba(255,85,0,0.35)] hover:shadow-[0_8px_32px_rgba(255,85,0,0.6)] transition-all duration-300 ease-out cursor-pointer"
+              >
+                <span>Start Your First Sprint</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+              </Link>
 
               <Link
                 href="#phases"
-                className="rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white px-7 py-4 font-medium text-base backdrop-blur-md transition-all duration-300"
+                className="rounded-full bg-white/10 hover:bg-white text-white hover:text-[#07112C] border border-white/20 hover:border-white px-7 py-4 font-medium text-base backdrop-blur-md shadow-sm hover:shadow-[0_8px_30px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out cursor-pointer"
               >
                 View 5-Phase Breakdown
               </Link>

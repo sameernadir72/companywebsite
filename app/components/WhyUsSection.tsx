@@ -13,7 +13,7 @@ if (typeof window !== "undefined") {
 
 const valueProps = [
     {
-        icon: "/Vector.png",
+        icon: "/Vector-0.png",
         alt: "Connected team and brand consistency",
         heading: "A shared creative direction",
         text: "Your website, content and campaigns feel like one brand.",
@@ -43,6 +43,7 @@ export function WhyUsSection() {
         const ctx = gsap.context(() => {
             const mm = gsap.matchMedia();
 
+            // Animate only when motion is welcome.
             mm.add("(prefers-reduced-motion: no-preference)", () => {
                 // 1. Left column entrance
                 if (leftColRef.current) {
@@ -85,6 +86,17 @@ export function WhyUsSection() {
                     );
                 }
             });
+
+            // Reduced-motion safety net: guarantee final state, never leave content hidden.
+            mm.add("(prefers-reduced-motion: reduce)", () => {
+                const targets: Element[] = [];
+                if (leftColRef.current) targets.push(...Array.from(leftColRef.current.children));
+                if (rightColRef.current) targets.push(...Array.from(rightColRef.current.querySelectorAll(".why-us-row")));
+                if (targets.length) gsap.set(targets, { opacity: 1, y: 0, clearProps: "transform" });
+            });
+
+            // Let context.revert() also tear down the matchMedia listeners.
+            return () => mm.revert();
         }, sectionRef);
 
         return () => ctx.revert();
@@ -95,83 +107,86 @@ export function WhyUsSection() {
             id="why-us"
             ref={sectionRef}
             aria-label="Why Us — Connected brand presence"
-            className="relative w-full overflow-hidden bg-[#05112F] py-24 sm:py-28 lg:py-36 text-white isolate"
+            className="relative isolate w-full overflow-hidden bg-[#05112F] py-24 sm:py-28 lg:py-36 text-white"
         >
-            {/* Background Liquid Wave Layer */}
-            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none">
+            {/* Background Liquid Wave Layer — full-bleed, fills the padded section box */}
+            <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden">
                 <Image
-                    src="/background-why-us 1.png"
+                    src="/background-why-us.png"
                     alt="Why Us deep blue wave background"
                     fill
                     priority
                     sizes="100vw"
-                    className="object-cover object-bottom"
+                    quality={100}
+                    className="h-full w-full object-cover object-[70%_bottom] sm:object-[65%_bottom] lg:object-[center_bottom]"
                 />
                 {/* Subtle dark gradient overlay for optimal legibility */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#05112F]/40 via-transparent to-[#05112F]/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#05112F]/40 via-transparent to-[#05112F]/20 pointer-events-none" />
             </div>
 
-            {/* Main Layout Container matching Figma width: 1650px */}
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-10 px-10">
-                {/* Left Column: ab flex-1 — jitni space bachegi utni le lega */}
-                <div ref={leftColRef} className="flex flex-col">
-                    {/* Eyebrow */}
-                    <span className="font-manrope text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#FF5500] uppercase block">
-                        WHY US
-                    </span>
+            {/* Constrained content container — keeps the row off the viewport edges */}
+            <div className="relative z-10 mx-auto w-full max-w-[1650px] px-6 sm:px-10 lg:px-16">
+                {/* Content Row: compact, balanced vertical layout */}
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14">
+                    {/* Left Column */}
+                    <div ref={leftColRef} className="flex flex-col flex-1 max-w-full lg:max-w-[720px] xl:max-w-[860px]">
+                        {/* Eyebrow */}
+                        <span className="font-manrope text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#FF5500] uppercase block">
+                            WHY US
+                        </span>
 
-                    {/* Main Brand Heading */}
-                    <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[68px] xl:text-[76px] font-extrabold tracking-tight leading-[1.06] my-4 sm:my-6 text-white">
-                        One team.
-                        <br />
-                        A more <span className="text-[#FF5500]">connected</span>
-                        <br />
-                        brand.
-                    </h2>
+                        {/* Main Brand Heading — single line layout */}
+                        <h2 className="font-manrope font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[52px] leading-tight tracking-tight my-3 text-white xl:whitespace-nowrap">
+                            One team.
+                            <br />
+                            A more <span className="text-[#FF5500]">connected</span> brand.
+                        </h2>
 
-                    <p className="font-manrope text-lg sm:text-xl lg:text-[22px] leading-snug text-[#C2D6FC]/90 max-w-lg">
-                        Bring your digital presence together with a shared direction.
-                    </p>
+                        {/* Sub-heading */}
+                        <p className="font-manrope font-normal text-base sm:text-lg lg:text-[18px] leading-relaxed text-[#C2D6FC]/90 max-w-lg">
+                            Bring your digital presence together with a shared direction.
+                        </p>
 
-                    <div>
-                        <Link
-                            href="/contact"
-                            className="group inline-flex items-center gap-2.5 rounded-full bg-[#FF5500] hover:bg-[#FF4500] text-white px-8 py-4 font-medium text-base shadow-[0_4px_24px_rgba(255,85,0,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer mt-8 sm:mt-10"
-                        >
-                            <span>Let&apos;s Talk</span>
-                            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </Link>
-                    </div>
-                </div>
-
-                {/* Right Column: fixed Figma width — ab shrink nahi hoga */}
-                <div ref={rightColRef} className="flex flex-col lg:shrink-0">
-                    {valueProps.map((prop, idx) => (
-                        <div
-                            key={prop.heading}
-                            className={`why-us-row group flex items-start gap-[31.25px] pb-[31.25px] pt-[31.25px] first:pt-0 ${idx !== valueProps.length - 1 ? "border-b border-white/10" : ""
-                                } min-h-[168.5px] w-full`}
-                        >
-                            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 mt-1">
-                                <Image
-                                    src={prop.icon}
-                                    alt={prop.alt}
-                                    width={56}
-                                    height={56}
-                                    className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
-                                />
-                            </div>
-
-                            <div className="flex flex-col justify-center flex-1">
-                                <h3 className="font-display text-xl sm:text-2xl lg:text-[28px] font-bold text-white leading-tight transition-colors duration-200 group-hover:text-blue-200">
-                                    {prop.heading}
-                                </h3>
-                                <p className="font-manrope text-base sm:text-lg lg:text-[18px] text-[#C2D6FC]/85 leading-relaxed mt-2.5">
-                                    {prop.text}
-                                </p>
-                            </div>
+                        <div>
+                            <Link
+                                href="/contact"
+                                className="group inline-flex items-center gap-2.5 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-7 py-3.5 font-medium text-sm sm:text-base shadow-[0_4px_24px_rgba(255,85,0,0.35)] hover:shadow-[0_8px_32px_rgba(255,85,0,0.55)] transition-all duration-300 ease-out cursor-pointer mt-5 sm:mt-6"
+                            >
+                                <span>Let&apos;s Talk</span>
+                                <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                            </Link>
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Right Column: fixed Figma width */}
+                    <div ref={rightColRef} className="flex flex-col w-full lg:w-[580px] lg:shrink-0">
+                        {valueProps.map((prop, idx) => (
+                            <div
+                                key={prop.heading}
+                                className={`why-us-row group flex items-start gap-5 lg:gap-6 py-4 sm:py-5 first:pt-0 last:pb-0 ${idx !== valueProps.length - 1 ? "border-b border-white/10" : ""
+                                    } w-full`}
+                            >
+                                <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 mt-0.5">
+                                    <Image
+                                        src={prop.icon}
+                                        alt={prop.alt}
+                                        width={56}
+                                        height={56}
+                                        className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col justify-center flex-1">
+                                    <h3 className="font-manrope font-bold text-lg sm:text-xl lg:text-[22px] leading-snug text-white transition-colors duration-200 group-hover:text-blue-200">
+                                        {prop.heading}
+                                    </h3>
+                                    <p className="font-manrope font-normal text-sm sm:text-[15px] leading-relaxed text-[#C2D6FC]/85 mt-1">
+                                        {prop.text}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

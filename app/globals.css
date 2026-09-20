@@ -85,6 +85,8 @@
   --font-mono: var(--font-geist);
   --font-serif: var(--font-newsreader);
   --font-manrope: var(--font-manrope);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-instrument: var(--font-instrument-sans);
 
   --color-brand-orange: #ff5500;
   --color-brand-orange-hover: #e64d00;

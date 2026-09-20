@@ -218,7 +218,7 @@ export function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => handleNavClick("/contact")}
-                className="group inline-flex items-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#FF4500] text-white px-5 py-2.5 text-xs lg:text-sm font-medium transition-all shadow-[0_2px_14px_rgba(255,85,0,0.35)] hover:scale-105 active:scale-95 cursor-pointer shrink-0 whitespace-nowrap"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-5 py-2.5 text-xs lg:text-sm font-medium transition-all duration-300 ease-out shadow-[0_2px_14px_rgba(255,85,0,0.35)] hover:shadow-[0_4px_20px_rgba(255,85,0,0.55)] cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <span>Let&apos;s Talk</span>
                 <ArrowRight className="w-3.5 h-3.5 lg:w-4 lg:h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -483,7 +483,7 @@ export function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => handleNavClick("/contact")}
-                  className="group flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#FF4500] active:scale-98 text-white px-6 py-3.5 font-semibold text-base shadow-[0_4px_20px_rgba(255,85,0,0.4)] transition-all w-full cursor-pointer"
+                  className="group flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#E03E00] text-white border border-[#FF5500] hover:border-[#FF6A1A] px-6 py-3.5 font-semibold text-base shadow-[0_4px_20px_rgba(255,85,0,0.35)] hover:shadow-[0_4px_24px_rgba(255,85,0,0.55)] transition-all duration-300 ease-out w-full cursor-pointer"
                 >
                   <span>Let&apos;s Talk</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />

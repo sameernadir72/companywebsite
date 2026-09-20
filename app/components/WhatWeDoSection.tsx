@@ -38,7 +38,7 @@ const servicesList: ServiceCardData[] = [
     badge: "01 / Identity",
     title: "Brand & Graphic Design",
     description: "A visual identity that feels unmistakably yours.",
-    image: "/service-01.png",
+    image: "/service-1.jpg",
     imageAlt: "Brand & Graphic Design preview",
     theme: "white",
     icon: PenTool,
@@ -49,9 +49,9 @@ const servicesList: ServiceCardData[] = [
     badge: "02 / Digital",
     title: "Website Development",
     description: "A strong digital home, built around your business.",
-    image: "/service-02.png",
+    image: "/service-2.png",
     imageAlt: "Website Development preview",
-    theme: "blue",
+    theme: "white",
     icon: Monitor,
   },
   {
@@ -60,7 +60,7 @@ const servicesList: ServiceCardData[] = [
     badge: "03 / Experience",
     title: "UI/UX Design",
     description: "Thoughtful experiences. Effortless interactions.",
-    image: "/service-03.png",
+    image: "/service-3.png",
     imageAlt: "UI/UX Design preview",
     theme: "white",
     icon: Layout,
@@ -71,7 +71,7 @@ const servicesList: ServiceCardData[] = [
     badge: "04 / Social",
     title: "Social Media Design & Management",
     description: "A consistent presence with something to say.",
-    image: "/service-04.png",
+    image: "/service-4.jpg",
     imageAlt: "Social Media Design preview",
     theme: "white",
     icon: MessageSquare,
@@ -82,7 +82,7 @@ const servicesList: ServiceCardData[] = [
     badge: "05 / Content",
     title: "Reels, Viral Creative & UGC",
     description: "Short-form stories made for real attention.",
-    image: "/service-05.png",
+    image: "/service-5.png",
     imageAlt: "Reels and Viral UGC preview",
     theme: "orange",
     icon: PlaySquare,
@@ -93,7 +93,7 @@ const servicesList: ServiceCardData[] = [
     badge: "06 / Motion",
     title: "2D Animation & Motion Graphics",
     description: "Bring personality, clarity, and movement to your message.",
-    image: "/service-06.png",
+    image: "/service-6.png",
     imageAlt: "2D Animation and Motion Graphics preview",
     theme: "white",
     icon: Clapperboard,
@@ -185,21 +185,24 @@ export function WhatWeDoSection() {
       id="services"
       ref={sectionRef}
       aria-label="What We Do — Everything Your Brand Needs. All In One Creative Studio."
-      className="relative w-full overflow-hidden  py-22 text-white isolate"
-
+      className="relative w-full overflow-hidden py-14 sm:py-18 lg:py-20 text-white isolate"
     >
-      {/* Background Liquid Wave Layer */}
+      {/* Background Liquid Wave Layer — high-definition 100vw rendering without vertical overstretch */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
         <Image
           src="/services-bg.png"
           alt="What We Do liquid blue background"
           fill
           priority
-          className="bg-cover bg-center bg-no-repeat"
+          sizes="100vw"
+          quality={100}
+          className="object-cover object-center w-full h-full select-none pointer-events-none"
         />
+        {/* Subtle ambient overlay to maintain text contrast while preserving image sharpness */}
+        <div className="absolute inset-0 bg-[#07112C]/20 pointer-events-none" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12 flex flex-col justify-between min-h-[960px] lg:min-h-[1032px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12 flex flex-col">
         {/* Section Header */}
         <div
           ref={headerRef}
@@ -214,16 +217,16 @@ export function WhatWeDoSection() {
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-bold tracking-tight leading-[1.14]">
-              <span className="text-white block">Everything Your Brand Needs.</span>
-              <span className="text-[#98A9CB] block">All In One Creative Studio.</span>
+            {/* Main Headline — exact Figma specs: Manrope Regular 400, 59px, line-height 66.08px, letter-spacing -3.24px */}
+            <h2 className="font-manrope font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[59px] lg:leading-[66.08px] lg:tracking-[-3.24px] text-white">
+              <span className="block font-manrope font-normal">Everything Your Brand Needs.</span>
+              <span className="block font-manrope font-normal text-[#98A9CB]">All In One Creative Studio.</span>
             </h2>
           </div>
 
-          {/* Right Subtitle */}
+          {/* Right Subtitle — exact Figma specs: DM Sans Regular 400, 14px, line-height 23.8px, letter-spacing 0px */}
           <div className="md:pb-1 lg:max-w-xs xl:max-w-sm">
-            <p className="font-manrope text-sm sm:text-base leading-relaxed text-[#CBD5E1]/90">
+            <p className="font-dm-sans font-normal text-[14px] leading-[23.8px] tracking-[0px] text-[#CBD5E1]/90">
               From your first identity to your next big campaign, we connect the dots.
             </p>
           </div>
@@ -289,7 +292,7 @@ export function WhatWeDoSection() {
                       {card.title}
                     </h3>
                     <p
-                      className={`font-manrope text-sm leading-relaxed ${isBlue
+                      className={`font-dm-sans font-normal text-[14px] leading-[23.8px] tracking-[0px] ${isBlue
                         ? "text-blue-100/90"
                         : isOrange
                           ? "text-white/95"
@@ -305,18 +308,18 @@ export function WhatWeDoSection() {
           })}
         </div>
 
-        {/* Bottom Bar Row */}
+        {/* Bottom Bar Row — exact Figma specs: DM Sans Regular 400, 14px, line-height 23.8px, letter-spacing 0px */}
         <div
           ref={footerRowRef}
           className="mt-10 sm:mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-white/10 pt-6"
         >
-          <p className="font-manrope text-sm sm:text-base text-[#CBD5E1]/80">
+          <p className="font-dm-sans font-normal text-[14px] leading-[23.8px] tracking-[0px] text-[#CBD5E1]/80">
             One brief. The right mix of skills. A consistent creative direction.
           </p>
 
           <Link
             href="/services"
-            className="group inline-flex items-center gap-1.5 text-white font-medium text-sm sm:text-base transition-colors duration-200 hover:text-white/90"
+            className="group inline-flex items-center gap-1.5 text-white font-dm-sans font-normal text-[14px] leading-[23.8px] tracking-[0px] transition-colors duration-200 hover:text-white/90"
           >
             <span className="underline underline-offset-4 decoration-white/40 transition-all duration-200 group-hover:decoration-white">
               Explore All Capabilities
