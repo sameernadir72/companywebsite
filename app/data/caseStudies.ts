@@ -153,7 +153,7 @@ export const caseStudies: CaseStudy[] = [
       "Cross-Platform Social Toolkits",
     ],
     heroImage: "/ideas_3.png",
-    galleryImages: ["/ideas_3.png", "/PERFORMANCE.png", "/service-05.png", "/service-06.png"],
+    galleryImages: ["/ideas_3.png", "/PERFORMANCE.png", "/service-5.png", "/service-6.png"],
     metrics: [
       {
         value: "14.8M",
@@ -205,7 +205,7 @@ export const caseStudies: CaseStudy[] = [
       "CAC & ROAS Performance Optimization",
     ],
     heroImage: "/ideas_4.png",
-    galleryImages: ["/ideas_4.png", "/STRATEGY.png", "/service-04.png", "/PERFORMANCE.png"],
+    galleryImages: ["/ideas_4.png", "/STRATEGY.png", "/service-4.jpg", "/PERFORMANCE.png"],
     metrics: [
       {
         value: "3.4x",
