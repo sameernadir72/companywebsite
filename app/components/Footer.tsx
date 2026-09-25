@@ -69,11 +69,11 @@ export function Footer() {
       {/* Background Graphic with Glowing Ribbons & Waves matching the design */}
       <div
         className="absolute inset-0 bg-cover bg-bottom bg-no-repeat pointer-events-none z-0"
-        style={{ backgroundImage: "url('/cta_bg.png')" }}
+        style={{ backgroundImage: "url('/Footer.jpeg')" }}
       />
 
       {/* Main Container */}
-      <div className="relative z-10 mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12">
+      <div className="relative z-10 mx-auto w-fullmax-w-340 px-6 sm:px-10 lg:px-12 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12">
         {/* Top Grid: Tagline + 4 Navigation Columns + Divider + CTA Section */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-8 xl:gap-12">
           {/* Left Column: Slogan / Tagline */}

@@ -12,25 +12,18 @@ export function HeroSection() {
       aria-label="Fusion Folio — Your 360° Creative & Digital Partner"
       className="relative w-full overflow-hidden bg-[#07112C] text-white flex flex-col items-center"
     >
-      {/* High-res background image spanning 100% of viewport width */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full min-w-full overflow-hidden select-none"
-        style={{
-          backgroundImage: "url('/hero-bg-wave.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-        }}
-      >
-        <Image
-          src="/hero-bg-wave.jpeg"
-          alt="Fusion Folio Hero Background Wave"
-          fill
-          priority
-          sizes="100vw"
+      {/* High-res background video spanning 100% of viewport width */}
+      <div className="pointer-events-none absolute inset-0 z-0 h-full w-full min-w-full overflow-hidden select-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/hero-bg-wave.jpeg"
           className="object-cover object-center w-full h-full select-none pointer-events-none"
-        />
+        >
+          <source src="/Animating_blue_fabric_home.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Ambient gradient overlays for smooth blending and optimal text contrast */}
