@@ -7,7 +7,11 @@ import { motion } from "framer-motion";
 
 export function WorkHero() {
   return (
-    <section className="relative w-full overflow-hidden bg-white text-[#0A1128] pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 min-h-[700px] lg:min-h-[780px] xl:min-h-[832px] flex items-center">
+    <section
+      id="work-hero"
+      aria-label="Selected Work & Case Studies Hero"
+      className="relative w-full overflow-hidden bg-white text-[#0A1128] pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 min-h-[700px] lg:min-h-[780px] xl:min-h-[832px] flex items-center scroll-mt-28"
+    >
       {/* Background Luminous Wave - Frame 3 Exact Figma Spec */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
         <Image
@@ -15,6 +19,8 @@ export function WorkHero() {
           alt="Fusion Folio Wave Ambient Glow"
           fill
           priority
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-center lg:object-top w-full h-full"
         />
@@ -50,7 +56,7 @@ export function WorkHero() {
 
             {/* Subhead */}
             <p className="mt-5 sm:mt-6 text-base sm:text-lg lg:text-[18px] xl:text-[19px] text-[#475569] leading-relaxed max-w-[540px] font-normal font-manrope">
-              Over 10,000+ designs created by our multi-million creative team for growing businesses around the globe.
+              Over 10,000+ designs created by our multidisciplinary creative team for growing businesses around the globe.
             </p>
 
             {/* Action CTA */}
@@ -62,25 +68,34 @@ export function WorkHero() {
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
+
+              <Link
+                href="#case-studies"
+                className="rounded-full bg-[#0A1128]/5 hover:bg-[#0A1128] text-[#0A1128] hover:text-white border border-[#0A1128]/15 px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold transition-all duration-300 cursor-pointer"
+              >
+                Explore Case Studies
+              </Link>
             </div>
           </motion.div>
 
-          {/* Right Column: Exact Mockup Specs (775px x 516.67px in Figma) */}
+          {/* Right Column: Exact Mockup Specs (1024px x 682px native asset rendered cleanly) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 xl:col-span-6 flex items-center justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-[560px] sm:max-w-[640px] lg:max-w-[720px] xl:w-[775px] xl:h-[516.67px] transition-transform duration-500 hover:scale-[1.02]">
+            <div className="relative w-full max-w-[560px] sm:max-w-[640px] lg:max-w-[720px] xl:w-[775px] transition-transform duration-500 hover:scale-[1.02]">
               <Image
                 src="/work/hero-cards-showcase.png"
                 alt="Fusion Folio Featured Creations — Real brands. Real results."
-                width={775}
-                height={517}
+                width={1024}
+                height={682}
                 priority
+                quality={100}
+                unoptimized
                 sizes="(min-width: 1280px) 775px, (min-width: 1024px) 50vw, 100vw"
-                className="w-full h-auto xl:h-[516.67px] object-contain drop-shadow-[0_24px_55px_rgba(0,0,0,0.16)] select-none pointer-events-none"
+                className="w-full h-auto object-contain drop-shadow-[0_24px_55px_rgba(0,0,0,0.16)] select-none pointer-events-none"
               />
             </div>
           </motion.div>

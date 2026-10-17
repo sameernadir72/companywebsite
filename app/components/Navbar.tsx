@@ -130,6 +130,8 @@ export function Navbar() {
     }
   };
 
+  const isLightHeroPage = pathname === "/work";
+
   return (
     <>
       <header
@@ -140,7 +142,7 @@ export function Navbar() {
         } ${
           open
             ? "border-b border-white/10 bg-[#07112C]"
-            : scrolled
+            : scrolled || isLightHeroPage
             ? "border-b border-white/10 bg-[#07112C]/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
             : "border-b border-transparent bg-transparent shadow-none"
         }`}
@@ -360,7 +362,7 @@ export function Navbar() {
                               </span>
                               <div className="flex flex-col divide-y divide-white/5">
                                 {group.items.map((item) => (
-                                  <a
+                                  <Link
                                     key={item.title}
                                     href={item.href}
                                     onClick={() => handleNavClick(item.href)}
@@ -383,7 +385,7 @@ export function Navbar() {
                                       size={14}
                                       className="text-white/30 shrink-0 group-hover/item:text-[#FF5500] group-hover/item:translate-x-0.5 transition-all"
                                     />
-                                  </a>
+                                  </Link>
                                 ))}
                               </div>
                             </div>

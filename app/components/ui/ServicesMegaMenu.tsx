@@ -4,13 +4,13 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
-  BrainCircuit,
-  Blocks,
   ChevronDown,
   Clapperboard,
-  Layers,
-  LayoutTemplate,
-  Palette,
+  Layout,
+  MessageSquare,
+  Monitor,
+  PenTool,
+  PlaySquare,
   type LucideIcon,
 } from "lucide-react";
 import gsap from "gsap";
@@ -29,61 +29,60 @@ type ServiceGroup = {
 };
 
 /**
- * Grounded in the six capabilities already defined in `Services.tsx` (each
- * item links to that capability's card via the `id`s added there), grouped
- * into three disciplines the way the reference layout groups its services.
+ * Grounded in the six capabilities defined in `lib/services.ts`,
+ * deep-linking to each discipline section on `/services` (`scroll-mt-28`).
  */
 export const servicesGroups: ServiceGroup[] = [
   {
-    label: "Design services",
-    pillClassName: "bg-mint text-on-mint",
+    label: "Identity & Experience",
+    pillClassName: "bg-[#FF5500]/15 text-[#FF5500] border border-[#FF5500]/30",
     items: [
       {
-        title: "Web design",
-        description: "Marketing sites, product sites, and design systems built to convert.",
-        href: "/#web",
-        icon: LayoutTemplate,
+        title: "Brand & Graphic Design",
+        description: "A visual identity that feels unmistakably yours.",
+        href: "/services#brand",
+        icon: PenTool,
       },
       {
-        title: "Brand & identity",
-        description: "Logotypes, visual systems, and guidelines that hold together.",
-        href: "/#brand",
-        icon: Palette,
+        title: "UI/UX Product Design",
+        description: "Thoughtful experiences. Effortless interactions.",
+        href: "/services#uiux",
+        icon: Layout,
       },
     ],
   },
   {
-    label: "Platform & product",
-    pillClassName: "bg-gradient-accent text-on-primary",
+    label: "Digital & Social",
+    pillClassName: "bg-[#185BFF]/20 text-[#60A5FA] border border-[#185BFF]/35",
     items: [
       {
-        title: "SaaS platforms",
-        description: "Full-stack product engineering, wireframe to production.",
-        href: "/#saas",
-        icon: Layers,
+        title: "Website Development",
+        description: "A strong digital home, built around your business.",
+        href: "/services#web",
+        icon: Monitor,
       },
       {
-        title: "Blockchain & Web3",
-        description: "Smart contracts, wallets, and on-chain dashboards.",
-        href: "/#chain",
-        icon: Blocks,
+        title: "Social Media Design",
+        description: "A consistent presence with something to say.",
+        href: "/services#social",
+        icon: MessageSquare,
       },
     ],
   },
   {
-    label: "AI & motion",
-    pillClassName: "bg-ink-soft text-white",
+    label: "Motion & Content",
+    pillClassName: "bg-white/10 text-white border border-white/20",
     items: [
       {
-        title: "AI-powered apps",
-        description: "Copilots and agentic workflows woven into your product.",
-        href: "/#ai",
-        icon: BrainCircuit,
+        title: "Reels, Viral Creative & UGC",
+        description: "Short-form stories made for real attention.",
+        href: "/services#reels",
+        icon: PlaySquare,
       },
       {
-        title: "AI video & graphic design",
-        description: "Brand video and motion graphics at agency polish.",
-        href: "/#motion",
+        title: "2D Animation & Motion",
+        description: "Bring personality, clarity, and movement to your message.",
+        href: "/services#motion",
         icon: Clapperboard,
       },
     ],
@@ -156,42 +155,41 @@ export function ServicesMegaMenu() {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
-        className={`flex cursor-pointer items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none ${
-          open ? "bg-white/10 text-white" : "text-white/80 hover:bg-white/10 hover:text-white"
+        className={`flex cursor-pointer items-center gap-1 rounded-full px-3.5 py-2 text-xs font-medium transition-colors duration-200 focus-visible:outline-none lg:px-4 lg:text-sm ${
+          open ? "bg-white/15 text-white font-semibold" : "text-white/80 hover:bg-white/10 hover:text-white"
         }`}
       >
         Services
-        <ChevronDown size={14} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={14} className={`transition-transform duration-200 ${open ? "rotate-180 text-[#FF5500]" : ""}`} />
       </button>
 
       <div
         ref={panelRef}
-        className="invisible fixed top-[92px] left-1/2 z-50 w-[min(880px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl border border-border bg-surface p-6 opacity-0 shadow-card-elevated"
+        className="invisible fixed top-[88px] left-1/2 z-50 w-[min(920px,calc(100vw-2rem))] -translate-x-1/2 rounded-3xl border border-white/15 bg-[#07112C]/95 backdrop-blur-2xl p-7 opacity-0 shadow-[0_24px_64px_rgba(0,0,0,0.6)] text-white"
       >
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-7">
           {servicesGroups.map((group) => (
             <div key={group.label} className="flex flex-col gap-4">
-              <span className={`inline-flex w-fit items-center rounded-full px-4 py-2 text-sm font-semibold ${group.pillClassName}`}>
+              <span className={`inline-flex w-fit items-center rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider ${group.pillClassName}`}>
                 {group.label}
               </span>
-              <div className="flex flex-col">
+              <div className="flex flex-col divide-y divide-white/10">
                 {group.items.map((item) => (
                   <Link
                     key={item.title}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="group/item flex items-start justify-between gap-3 border-b border-border/60 py-4 first:pt-0 last:border-0"
+                    className="group/item flex items-start justify-between gap-3 py-4 first:pt-1 last:pb-0"
                   >
-                    <div className="flex flex-col gap-0.5">
-                      <span className="text-sm font-semibold text-primary group-hover/item:text-accent">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-sm font-semibold text-white transition-colors group-hover/item:text-[#FF5500]">
                         {item.title}
                       </span>
-                      <span className="text-xs leading-snug text-muted">{item.description}</span>
+                      <span className="text-xs leading-relaxed text-white/60">{item.description}</span>
                     </div>
-                    <item.icon
-                      size={18}
-                      className="mt-0.5 shrink-0 text-muted transition-colors group-hover/item:text-accent"
-                    />
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/5 text-white/60 transition-colors group-hover/item:bg-[#FF5500]/15 group-hover/item:text-[#FF5500]">
+                      <item.icon size={16} />
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -202,9 +200,9 @@ export function ServicesMegaMenu() {
         <Link
           href="/services"
           onClick={() => setOpen(false)}
-          className="mt-6 flex items-center justify-center gap-1.5 rounded-full border border-border py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+          className="mt-6 flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] py-3 text-sm font-semibold text-white transition-all hover:border-[#FF5500] hover:bg-[#FF5500] hover:text-white"
         >
-          View all services
+          <span>Explore All 6 Capabilities</span>
           <ArrowUpRight size={16} />
         </Link>
       </div>

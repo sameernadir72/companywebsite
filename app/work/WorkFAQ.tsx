@@ -46,7 +46,11 @@ export function WorkFAQ() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-20 sm:py-28 border-t border-slate-200/80">
+    <section
+      id="work-faq"
+      aria-label="Work Frequently Asked Questions"
+      className="relative w-full overflow-hidden bg-white py-20 sm:py-28 border-t border-slate-200/80 scroll-mt-28"
+    >
       <div className="relative z-10 mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Heading & Information */}

@@ -185,7 +185,7 @@ export function WhatWeDoSection() {
       id="services"
       ref={sectionRef}
       aria-label="What We Do — Everything Your Brand Needs. All In One Creative Studio."
-      className="relative w-full overflow-hidden py-14 sm:py-18 lg:py-20 text-white isolate"
+      className="relative w-full overflow-hidden py-14 sm:py-18 lg:py-20 text-white isolate scroll-mt-28"
     >
       {/* Background Liquid Wave Layer — high-definition 100vw rendering without vertical overstretch */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">

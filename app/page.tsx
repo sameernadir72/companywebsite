@@ -9,8 +9,6 @@ import { ProcessSection } from "./components/ProcessSection";
 import { IndustriesSection } from "./components/IndustriesSection";
 import { MeetFusionFolioSection } from "./components/MeetFusionFolioSection";
 import { WorkWithUsSection } from "./components/WorkWithUsSection";
-import { Comparison } from "./components/Comparison";
-import { CaseStudies } from "./components/CaseStudies";
 import { FAQ } from "./components/FAQ";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";

@@ -94,7 +94,7 @@ export function SocialContentSection() {
       id="social-content"
       ref={sectionRef}
       aria-label="Social & Content — Show Up. Stay Relevant."
-      className="relative w-full overflow-hidden bg-[#05112F] py-20 sm:py-24 lg:py-32 text-white isolate"
+      className="relative w-full overflow-hidden bg-[#05112F] py-20 sm:py-24 lg:py-32 text-white isolate scroll-mt-28"
     >
       {/* Background Liquid Waves Layer */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
@@ -103,6 +103,7 @@ export function SocialContentSection() {
           alt="Social & Content background wave"
           fill
           priority
+          sizes="100vw"
           quality={100}
           unoptimized
           className="object-cover object-center pointer-events-none select-none"

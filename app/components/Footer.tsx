@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUp } from "lucide-react";
 
@@ -67,13 +68,19 @@ export function Footer() {
   return (
     <footer className="relative w-full overflow-hidden bg-[#040C20] text-white isolate">
       {/* Background Graphic with Glowing Ribbons & Waves matching the design */}
-      <div
-        className="absolute inset-0 bg-cover bg-bottom bg-no-repeat pointer-events-none z-0"
-        style={{ backgroundImage: "url('/Footer.jpeg')" }}
-      />
+      <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden">
+        <Image
+          src="/Footer.jpeg"
+          alt="Footer ambient wave background"
+          fill
+          sizes="100vw"
+          quality={95}
+          className="object-cover object-bottom pointer-events-none select-none"
+        />
+      </div>
 
       {/* Main Container */}
-      <div className="relative z-10 mx-auto w-fullmax-w-340 px-6 sm:px-10 lg:px-12 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12">
+      <div className="relative z-10 mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12">
         {/* Top Grid: Tagline + 4 Navigation Columns + Divider + CTA Section */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-8 xl:gap-12">
           {/* Left Column: Slogan / Tagline */}

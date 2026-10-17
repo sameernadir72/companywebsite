@@ -133,7 +133,7 @@ export function ProcessSection() {
       id="process"
       ref={sectionRef}
       aria-label="Our Process — From the first conversation to your next launch."
-      className="relative w-full overflow-hidden bg-white py-20 sm:py-24 lg:py-28 text-[#0A1128]"
+      className="relative w-full overflow-hidden bg-white py-20 sm:py-24 lg:py-28 text-[#0A1128] scroll-mt-28"
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12">
         {/* Section Header */}

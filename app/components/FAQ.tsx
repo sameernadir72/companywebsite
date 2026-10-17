@@ -105,7 +105,7 @@ export function FAQ() {
       id="faq"
       ref={sectionRef}
       aria-label="Frequently Asked Questions"
-      className="relative w-full py-20 sm:py-28 lg:py-32 bg-white text-[#0B1220]"
+      className="relative w-full py-20 sm:py-28 lg:py-32 bg-white text-[#0B1220] scroll-mt-28"
     >
       <div className="mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">

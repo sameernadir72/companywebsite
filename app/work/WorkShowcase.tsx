@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CaseStudy } from "@/lib/case-studies";
 
@@ -19,131 +19,160 @@ const categories = [
   "UI/UX Design",
 ];
 
-const figmaProjects = [
+interface FigmaProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  href: string;
+}
+
+const figmaProjects: FigmaProjectItem[] = [
   {
     id: "proj-1",
     title: "Arabic Social Media Campaign",
     category: "Social Media Graphics",
     image: "/Button - View The Art of Expression, Print & Booklets.png",
+    href: "/work/offset",
   },
   {
     id: "proj-2",
     title: "Boost 100% Electric Automotive Billboard",
     category: "Web Design",
     image: "/Button - View The Art of Expression, Print & Booklets-1.png",
+    href: "/work/aura",
   },
   {
     id: "proj-3",
     title: "Organic Skincare & Cosmetics E-commerce",
     category: "Web Design",
     image: "/Button - View The Art of Expression, Print & Booklets-2.png",
+    href: "/work/lume",
   },
   {
     id: "proj-4",
     title: "Mineral Water Commercial Creative",
     category: "Social Media Graphics",
     image: "/Button - View The Art of Expression, Print & Booklets-3.png",
+    href: "/work/frame",
   },
   {
     id: "proj-5",
     title: "AVANX Modern Commerce Studio",
     category: "Logo & Branding",
     image: "/Button - View The Art of Expression, Print & Booklets-4.png",
+    href: "/work/halcyon",
   },
   {
     id: "proj-6",
     title: "Luxury Yachting & Hospitality Story",
     category: "Social Media Graphics",
     image: "/Button - View The Art of Expression, Print & Booklets-5.png",
+    href: "/work/frame",
   },
   {
     id: "proj-7",
     title: "Empower SaaS Cloud Operations Platform",
     category: "Web Design",
     image: "/Button - View The Art of Expression, Print & Booklets-6.png",
+    href: "/work/circuit",
   },
   {
     id: "proj-8",
     title: "Workflow Analytics & Developer Architecture",
     category: "UI/UX Design",
     image: "/Button - View The Art of Expression, Print & Booklets-7.png",
+    href: "/work/aura",
   },
   {
     id: "proj-9",
     title: "Industrial Operations & Field Report",
     category: "Print Materials",
     image: "/Button - View The Art of Expression, Print & Booklets-8.png",
+    href: "/work/halcyon",
   },
   {
     id: "proj-10",
     title: "SPENDVEST Fintech Mobile Card System",
     category: "Packaging",
     image: "/Button - View The Art of Expression, Print & Booklets-9.png",
+    href: "/work/circuit",
   },
   {
     id: "proj-11",
     title: "Logistics SaaS Fleet Management Dashboard",
     category: "UI/UX Design",
     image: "/Button - View The Art of Expression, Print & Booklets-10.png",
+    href: "/work/aura",
   },
   {
     id: "proj-12",
     title: "Greenova Nature Eco-Initiative Portal",
     category: "Web Design",
     image: "/Button - View The Art of Expression, Print & Booklets-11.png",
+    href: "/work/lume",
   },
   {
     id: "proj-13",
     title: "Shaping Tomorrow Clean Solar Grid",
     category: "Infographics",
     image: "/Button - View The Art of Expression, Print & Booklets-12.png",
+    href: "/work/offset",
   },
   {
     id: "proj-14",
     title: "Creator Economy Web Portfolio",
     category: "Web Design",
     image: "/Button - View The Art of Expression, Print & Booklets-13.png",
+    href: "/work/frame",
   },
   {
     id: "proj-15",
     title: "Greenova Wind Energy Brochure & Editorial",
     category: "Print Materials",
     image: "/Button - View The Art of Expression, Print & Booklets-14.png",
+    href: "/work/halcyon",
   },
   {
     id: "proj-16",
     title: "Botanical Skincare Brand Flagship",
     category: "Web Design",
     image: "/Button - View The Art of Expression, Print & Booklets-15.png",
+    href: "/work/lume",
   },
   {
     id: "proj-17",
     title: "Matcha Organic Eco Packaging",
     category: "Packaging",
     image: "/Button - View The Art of Expression, Print & Booklets-16.png",
+    href: "/work/halcyon",
   },
   {
     id: "proj-18",
     title: "Virtual Speaker Summit Poster Grid",
     category: "Social Media Graphics",
     image: "/Button - View The Art of Expression, Print & Booklets-17.png",
+    href: "/work/offset",
   },
   {
     id: "proj-19",
     title: "CyberG Logos & Identity System",
     category: "Logo & Branding",
     image: "/Button - View CyberG, Logos & Branding.png",
+    href: "/work/solace-ai",
   },
   {
     id: "proj-20",
     title: "Designed to Go Places Illustration Series",
     category: "Brand Identity",
     image: "/Button - View Designed to Go Places, Illustrations.png",
+    href: "/work/frame",
   },
 ];
 
 export function WorkShowcase({ initialCaseStudies }: { initialCaseStudies: CaseStudy[] }) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  void initialCaseStudies;
 
   const filteredProjects =
     activeCategory === "All"
@@ -175,11 +204,11 @@ export function WorkShowcase({ initialCaseStudies }: { initialCaseStudies: CaseS
         })}
       </div>
 
-      {/* 3-Column Portfolio Gallery (Figma Exact 3-Column Grid) */}
+      {/* 3-Column Portfolio Gallery (Figma Exact 3-Column Grid — 503x436 Native Card Assets) */}
       <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12">
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch"
         >
           <AnimatePresence>
             {filteredProjects.map((project) => (
@@ -192,34 +221,42 @@ export function WorkShowcase({ initialCaseStudies }: { initialCaseStudies: CaseS
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col"
               >
-                <div className="group relative overflow-hidden rounded-[22px] bg-slate-50 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col">
-                  {/* Project Image Showcase */}
-                  <div className="relative aspect-[504/468] w-full overflow-hidden bg-slate-100">
+                <Link
+                  href={project.href}
+                  className="group relative overflow-hidden rounded-[24px] transition-all duration-300 hover:-translate-y-1.5 h-full flex flex-col"
+                >
+                  {/* Project Image Showcase — Native 503x436 pre-framed Figma card */}
+                  <div className="relative aspect-[503/436] w-full overflow-hidden rounded-[24px]">
                     <Image
                       src={project.image}
                       alt={project.title}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                      width={503}
+                      height={436}
+                      quality={100}
+                      unoptimized
+                      sizes="(min-width: 1280px) 420px, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
 
-                    {/* Hover subtle glow overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
                     {/* Category pill on hover */}
-                    <div className="absolute top-4 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      <span className="rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1 text-[11px] font-manrope font-bold uppercase tracking-wider text-[#005DFF] shadow-sm">
+                    <div className="absolute top-5 left-5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <span className="rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1 text-[11px] font-manrope font-bold uppercase tracking-wider text-[#005DFF] shadow-md">
                         {project.category}
                       </span>
                     </div>
 
-                    {/* View prompt button on hover */}
-                    <div className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-white text-[#0A1128] px-4 py-2 text-xs font-manrope font-bold opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 shadow-md">
-                      <span>View</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#005DFF]" />
+                    {/* Title & View prompt button on hover */}
+                    <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between gap-2 rounded-2xl bg-[#0A1128]/90 backdrop-blur-md px-4 py-2.5 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 shadow-lg">
+                      <span className="text-xs sm:text-sm font-manrope font-bold text-white line-clamp-1">
+                        {project.title}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-[#FF631C] text-white px-3 py-1 text-xs font-manrope font-bold shrink-0">
+                        <span>View</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
 
@@ -233,14 +270,17 @@ export function WorkShowcase({ initialCaseStudies }: { initialCaseStudies: CaseS
             >
               <Link
                 href="/contact"
-                className="group relative overflow-hidden rounded-[22px] bg-slate-50 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(255,99,28,0.2)] hover:-translate-y-1.5 transition-all duration-300 h-full flex items-center justify-center aspect-[504/468]"
+                className="group relative overflow-hidden rounded-[24px] bg-[#F8FAFC] border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(255,99,28,0.18)] hover:-translate-y-1.5 transition-all duration-300 h-full flex items-center justify-center aspect-[503/436]"
               >
                 <Image
                   src="/addmore_Button.png"
                   alt="And many more projects... Start a Project"
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-contain p-6 group-hover:scale-105 transition-transform duration-300"
+                  width={465}
+                  height={381}
+                  quality={100}
+                  unoptimized
+                  sizes="(min-width: 1280px) 420px, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="w-full h-full object-contain p-3 group-hover:scale-[1.03] transition-transform duration-300"
                 />
               </Link>
             </motion.div>
@@ -250,3 +290,4 @@ export function WorkShowcase({ initialCaseStudies }: { initialCaseStudies: CaseS
     </div>
   );
 }
+

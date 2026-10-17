@@ -169,7 +169,7 @@ export function AboutSection() {
     <section
       id="about"
       aria-label="About Us — Big ideas deserve a connected team"
-      className="relative overflow-hidden bg-[#FAFAFC] py-10 sm:py-14 lg:py-16 text-[#0A1128]"
+      className="relative overflow-hidden bg-[#FAFAFC] py-10 sm:py-14 lg:py-16 text-[#0A1128] scroll-mt-28"
     >
       {/* Subtle organic blue contour curves in background */}
       <div

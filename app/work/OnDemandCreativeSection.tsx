@@ -7,37 +7,37 @@ import { motion } from "framer-motion";
 
 const bentoItems = [
   {
-    title: "Stationery & Cards",
-    category: "Brand Identity",
-    image: "/Button - View The Art of Expression, Print & Booklets.png",
+    title: "Digital Flagship & Web Platforms",
+    category: "Web Engineering",
+    image: "/service-2.png",
     colSpan: "col-span-12 sm:col-span-6 lg:col-span-7",
     aspect: "aspect-[16/10]",
   },
   {
-    title: "Industrial Logistics",
-    category: "Large Format",
-    image: "/Button - View The Art of Expression, Print & Booklets-8.png",
+    title: "Social & Paid Ad Creative Systems",
+    category: "Campaign Creative",
+    image: "/service-4.jpg",
     colSpan: "col-span-12 sm:col-span-6 lg:col-span-5",
     aspect: "aspect-[16/10]",
   },
   {
-    title: "Mobile App Experience",
+    title: "Mobile App & Product UI/UX",
     category: "Digital UI/UX",
-    image: "/Button - View The Art of Expression, Print & Booklets-9.png",
+    image: "/service-1.jpg",
     colSpan: "col-span-12 sm:col-span-4",
     aspect: "aspect-[4/3]",
   },
   {
-    title: "Brand Icon & Mark",
-    category: "Logomark",
-    image: "/Button - View CyberG, Logos & Branding.png",
+    title: "Brand Identity & Visual Systems",
+    category: "Logo & Branding",
+    image: "/service-3.png",
     colSpan: "col-span-12 sm:col-span-4",
     aspect: "aspect-[4/3]",
   },
   {
-    title: "Editorial & Lookbook",
-    category: "Print Media",
-    image: "/Button - View The Art of Expression, Print & Booklets-14.png",
+    title: "Motion Graphics & 2D Animation",
+    category: "Motion Design",
+    image: "/service-6.png",
     colSpan: "col-span-12 sm:col-span-4",
     aspect: "aspect-[4/3]",
   },
@@ -45,7 +45,11 @@ const bentoItems = [
 
 export function OnDemandCreativeSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-20 sm:py-28">
+    <section
+      id="on-demand"
+      aria-label="Your On-Demand Creative Team"
+      className="relative w-full overflow-hidden bg-white py-20 sm:py-28 scroll-mt-28"
+    >
       {/* Ambient background glows */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-orange-100/60 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-blue-100/60 rounded-full blur-3xl pointer-events-none" />
@@ -117,10 +121,12 @@ export function OnDemandCreativeSection() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="(min-width: 1024px) 35vw, 50vw"
+                      quality={100}
+                      unoptimized
+                      sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     <div className="absolute bottom-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-[11px] font-manrope font-bold text-[#005DFF] shadow-sm">
                         {item.title}

@@ -142,7 +142,7 @@ export function IndustriesSection() {
       id="industries"
       ref={sectionRef}
       aria-label="Industries — Different Industries. Same Curiosity."
-      className="relative w-full overflow-hidden py-20 sm:py-24 lg:py-32 isolate select-none"
+      className="relative w-full overflow-hidden py-20 sm:py-24 lg:py-32 isolate select-none scroll-mt-28"
     >
       {/* 3D Office Studio Background with Left Sculpture & Right City Skyline */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -151,6 +151,7 @@ export function IndustriesSection() {
           alt="Studio architecture background"
           fill
           priority={false}
+          sizes="100vw"
           quality={92}
           className="object-cover object-center pointer-events-none"
         />

@@ -114,7 +114,7 @@ export function WorkWithUsSection() {
       id="work-with-us"
       ref={sectionRef}
       aria-label="Work With Us — The right support. At the right stage."
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#F0F5FF] text-[#0B1220]"
+      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#F0F5FF] text-[#0B1220] scroll-mt-28"
     >
       <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-8 lg:px-12">
         {/* Section Header */}

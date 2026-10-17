@@ -107,7 +107,7 @@ export function WhyUsSection() {
             id="why-us"
             ref={sectionRef}
             aria-label="Why Us — Connected brand presence"
-            className="relative isolate w-full overflow-hidden bg-[#05112F] py-24 sm:py-28 lg:py-36 text-white"
+            className="relative isolate w-full overflow-hidden bg-[#05112F] py-24 sm:py-28 lg:py-36 text-white scroll-mt-28"
         >
             {/* Background Liquid Wave Layer — full-bleed, fills the padded section box */}
             <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden">

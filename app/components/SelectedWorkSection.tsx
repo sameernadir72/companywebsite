@@ -161,7 +161,7 @@ export function SelectedWorkSection() {
       id="work"
       ref={sectionRef}
       aria-label="Selected Work — Ideas made real. Work worth exploring."
-      className="relative w-full bg-white text-[#0A1128] py-20 sm:py-24 lg:py-28"
+      className="relative w-full bg-white text-[#0A1128] py-20 sm:py-24 lg:py-28 scroll-mt-28"
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-10 lg:px-12">
         {/* Section Header */}

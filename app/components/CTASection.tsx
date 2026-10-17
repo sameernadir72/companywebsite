@@ -2,14 +2,21 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ChevronDown, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
+
+const serviceLabelMap: Record<string, string> = {
+  website: "Launch a Website",
+  campaign: "Meta Ads & Performance",
+  partnership: "Full Creative Partnership",
+  social: "Reels & Short-Form Video",
+  branding: "Brand & Identity Design",
+};
 
 export function CTASection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -24,6 +31,8 @@ export function CTASection() {
     details: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -76,9 +85,43 @@ export function CTASection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setServerError(null);
+
+    const mappedService = formData.service
+      ? serviceLabelMap[formData.service] || "Launch a Website"
+      : "Launch a Website";
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          services: [mappedService],
+          budget: "Exploring / To Be Scoped",
+          timeline: "Exploring / Flexible",
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          company: formData.company.trim(),
+          website: "",
+          message: formData.details.trim(),
+        }),
+      });
+
+      const data: { success?: boolean; message?: string } = await res.json();
+
+      if (!res.ok || !data.success) {
+        setServerError(data.message || "Please check your details and try again.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setServerError("Network error. Please try again or email hello@fusionfolio.com.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,7 +129,7 @@ export function CTASection() {
       id="contact"
       ref={sectionRef}
       aria-label="Start a Conversation — Let's make your next move matter."
-      className="relative w-full overflow-hidden py-20 sm:py-28 lg:py-32 bg-[#040C20] text-white isolate"
+      className="scroll-mt-28 relative w-full overflow-hidden py-20 sm:py-28 lg:py-32 bg-[#040C20] text-white isolate"
     >
       {/* Ambient Lighting & Wave Layers */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
@@ -96,6 +139,7 @@ export function CTASection() {
           alt="Glowing wave background"
           fill
           priority
+          sizes="100vw"
           className="object-cover object-center opacity-30 mix-blend-screen"
         />
 
@@ -320,29 +364,37 @@ export function CTASection() {
                       />
                     </div>
 
+                    {serverError && (
+                      <p className="text-xs text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
+                        {serverError}
+                      </p>
+                    )}
+
                     {/* Submit Button */}
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="group w-full py-4 px-6 rounded-full bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold flex items-center justify-center gap-2 text-sm sm:text-base transition-all duration-200 shadow-[0_8px_24px_rgba(255,85,0,0.32)] hover:shadow-[0_12px_28px_rgba(255,85,0,0.42)] active:scale-[0.99] cursor-pointer"
+                        disabled={isSubmitting}
+                        className="group w-full py-4 px-6 rounded-full bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold flex items-center justify-center gap-2 text-sm sm:text-base transition-all duration-200 shadow-[0_8px_24px_rgba(255,85,0,0.32)] hover:shadow-[0_12px_28px_rgba(255,85,0,0.42)] active:scale-[0.99] cursor-pointer disabled:opacity-60"
                       >
-                        <span>Prepare My Enquiry</span>
-                        <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <span>Sending Brief...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Prepare My Enquiry</span>
+                            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                          </>
+                        )}
                       </button>
                     </div>
 
                     {/* Microcopy disclaimer */}
-                    <div className="pt-1 flex flex-col gap-2">
-                      <p className="text-[11px] sm:text-xs text-[#64748B] text-left font-light">
-                        We respond within 24 hours on business days. Your details are safe with us.
-                      </p>
-                      <p className="text-xs text-slate-500 text-left">
-                        Want an instant scope &amp; budget estimate?{" "}
-                        <Link href="/contact" className="font-semibold text-[#FF5500] hover:underline inline-flex items-center gap-1">
-                          Open 4-Step Scope Builder &rarr;
-                        </Link>
-                      </p>
-                    </div>
+                    <p className="text-[11px] sm:text-xs text-[#64748B] text-center font-light pt-1">
+                      We respond within 24 hours on business days. Your details are safe with us.
+                    </p>
                   </form>
                 </>
               )}
